@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no" />
+<meta name="theme-color" content="#0b0f1a" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="Streak Control" />
+<meta name="mobile-web-app-capable" content="yes" />
+<link rel="manifest" href="manifest.json" />
+<link rel="icon" href="icon.svg" type="image/svg+xml" />
+<title>Streak Control</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="device-frame" id="deviceFrame">
+    <div class="device-screen">
+      <div class="status-bar">
+        <span class="status-time" id="statusTime">12:00</span>
+        <span class="notch" aria-hidden="true"></span>
+        <div class="status-icons">
+          <span>5G</span>
+          <span class="battery"><i></i></span>
+        </div>
+      </div>
+
+      <main class="app" id="app">
+        <header class="app-header">
+          <div class="brand">
+            <span class="brand-dot"></span>
+            <span class="brand-name">Streak Control</span>
+          </div>
+          <button class="icon-btn" id="settingsBtn" aria-label="Settings" title="Settings">⚙</button>
+        </header>
+
+        <section class="hero">
+          <div class="ring-wrap">
+            <svg class="ring" viewBox="0 0 220 220" aria-hidden="true">
+              <circle class="ring-bg" cx="110" cy="110" r="96" />
+              <circle class="ring-fg" id="ringFg" cx="110" cy="110" r="96" />
+            </svg>
+            <div class="ring-center">
+              <div class="streak-label">CURRENT STREAK</div>
+              <div class="streak-time" id="streakTime">00:00:00</div>
+              <div class="streak-sub" id="streakSub">just started</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="target-card">
+          <div class="target-row">
+            <span class="target-label">TARGET TO BEAT</span>
+            <span class="target-value" id="targetValue">--:--:--</span>
+          </div>
+          <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+          <div class="target-meta" id="targetMeta">Beat your personal best.</div>
+        </section>
+
+        <section class="actions">
+          <button class="relapse-btn" id="relapseBtn">
+            <span class="relapse-icon">⚠</span>
+            <span>I RELAPSED</span>
+          </button>
+          <div class="action-row">
+            <button class="ghost-btn" id="keepAwakeBtn">Keep screen on: OFF</button>
+            <button class="ghost-btn" id="historyBtn">History</button>
+          </div>
+        </section>
+
+        <section class="stats">
+          <div class="stat"><span class="stat-v" id="statRelapses">0</span><span class="stat-l">Relapses</span></div>
+          <div class="stat"><span class="stat-v" id="statBest">0d</span><span class="stat-l">Best</span></div>
+          <div class="stat"><span class="stat-v" id="statAvg">--</span><span class="stat-l">Avg gap</span></div>
+        </section>
+
+        <section class="quote" id="quote">"Discipline is choosing between what you want now and what you want most."</section>
+
+        <footer class="app-footer">
+          <span id="lastRelapseText">Last: --</span>
+        </footer>
+      </main>
+
+      <aside class="panel" id="historyPanel" hidden>
+        <div class="panel-head">
+          <h3>History</h3>
+          <button class="icon-btn" id="closeHistory">✕</button>
+        </div>
+        <div class="panel-body" id="historyList"></div>
+        <div class="panel-foot">
+          <button class="ghost-btn danger" id="resetBtn">Reset all data</button>
+          <button class="ghost-btn" id="exportBtn">Export</button>
+        </div>
+      </aside>
+
+      <aside class="panel" id="settingsPanel" hidden>
+        <div class="panel-head">
+          <h3>Settings</h3>
+          <button class="icon-btn" id="closeSettings">✕</button>
+        </div>
+        <div class="panel-body">
+          <label class="field">
+            <span>Device preview frame (desktop)</span>
+            <select id="frameToggle">
+              <option value="on">Show phone frame</option>
+              <option value="off">Hide frame (fullscreen)</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Import data (JSON)</span>
+            <input type="file" id="importFile" accept="application/json" />
+          </label>
+          <p class="hint">Data is stored locally on this device only.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
