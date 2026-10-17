@@ -16,7 +16,7 @@ android.minapi = 21
 android.ndk = 25b
 android.archs = arm64-v8a, armeabi-v7a
 android.accept_sdk_license = True
-p4a.branch = v2024.01.1
+p4a.branch = v2024.01.21
 
 # icon / presplash (optional; falls back to defaults if missing)
 # icon.filename = %(source.dir)s/icon.png
